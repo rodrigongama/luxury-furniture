@@ -139,9 +139,32 @@
             background-size: cover;
         }
 
-        /* Scroll-linked layouts (Motion-style useScroll / useTransform) */
+        /* Scroll Zoom Hero (Motion tutorial pattern: scale + blur + fade on scroll) */
         #hero-bg-parallax {
-            will-change: transform, filter;
+            will-change: transform, filter, opacity;
+            transform-origin: center center;
+            backface-visibility: hidden;
+            opacity: 0.62;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #hero-bg-parallax {
+                filter: none !important;
+                transform: none !important;
+                opacity: 0.55 !important;
+            }
+            #hero-content {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            #hero-gradient {
+                opacity: 1 !important;
+            }
+        }
+
+        #hero-content {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
 
         #servicos-scroll-root {
@@ -246,18 +269,18 @@
     <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-luxury-dark"></div>
         
-        <!-- Background Image (scroll-linked blur + parallax via script) -->
-        <div id="hero-bg-parallax" class="absolute inset-0 opacity-40">
+        <!-- Background: opacidade/escala/blur controlados no scroll (Scroll Zoom Hero) -->
+        <div id="hero-bg-parallax" class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920" 
                  alt="Marcenaria de luxo" 
                  id="hero-bg-img"
-                 class="w-full h-full object-cover scale-105">
+                 class="w-full h-full object-cover">
         </div>
 
-        <div class="absolute inset-0 gradient-overlay"></div>
+        <div id="hero-gradient" class="absolute inset-0 gradient-overlay pointer-events-none"></div>
 
         <!-- Hero Content -->
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <div id="hero-content" class="relative z-10 text-center px-6 max-w-5xl mx-auto">
             <p id="hero-eyebrow" class="hero-line hero-line--1 text-sm md:text-base font-medium tracking-[0.2em] uppercase text-gold/90 mb-5">
                 Arboreto · Marcenaria sob medida
             </p>

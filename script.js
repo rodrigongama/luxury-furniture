@@ -267,21 +267,41 @@ animateOnScroll();
     /** Map t in [0,1] to [outA, outB] — like useTransform(scrollYProgress, [0,1], [...]) */
     const mix = (t, a, b) => a + (b - a) * clamp01(t);
 
-    /** Hero: scroll position → filter blur (Transform scroll position to any value) */
+    /**
+     * Scroll Zoom Hero — mesmo padrão do tutorial Motion
+     * (https://motion.dev/tutorials/react-scroll-zoom-hero):
+     * fundo escala para cima, borra e perde opacidade ao rolar; conteúdo recua levemente.
+     */
     function updateHeroScrollLinked() {
         const hero = document.getElementById('inicio');
         const layer = document.getElementById('hero-bg-parallax');
         const img = document.getElementById('hero-bg-img');
+        const heroContent = document.getElementById('hero-content');
+        const gradient = document.getElementById('hero-gradient');
         if (!hero || !layer || !img) return;
 
         const scrollY = window.scrollY;
-        const denom = Math.max(hero.offsetHeight * 0.9, 1);
-        const p = clamp01(scrollY / denom);
-        const blurPx = mix(p, 0, 10);
-        layer.style.filter = `blur(${blurPx}px)`;
+        const heroH = Math.max(hero.offsetHeight, 1);
+        const p = clamp01(scrollY / (heroH * 0.82));
 
-        const offset = scrollY * 0.35;
-        img.style.transform = `translateY(${offset}px) scale(1.05)`;
+        const scale = mix(p, 1, 1.28);
+        const blurPx = mix(p, 0, 26);
+        const bgOpacity = mix(p, 0.62, 0);
+        const parallaxY = scrollY * 0.22;
+
+        layer.style.opacity = String(bgOpacity);
+        layer.style.filter = `blur(${blurPx}px)`;
+        layer.style.transform = `translate3d(0, ${parallaxY}px, 0) scale(${scale})`;
+        img.style.transform = '';
+
+        if (heroContent) {
+            heroContent.style.opacity = String(mix(p, 1, 0.2));
+            heroContent.style.transform = `translate3d(0, ${mix(p, 0, -2.25)}rem, 0)`;
+        }
+
+        if (gradient) {
+            gradient.style.opacity = String(mix(p, 1, 0.45));
+        }
     }
 
     /**
