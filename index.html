@@ -235,7 +235,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#inicio" class="text-white hover:text-gold transition duration-300">Início</a>
                     <a href="#sobre" class="text-white hover:text-gold transition duration-300">Sobre</a>
-                    <a href="#projetos" class="text-white hover:text-gold transition duration-300">Projetos</a>
+                    <a href="projetos.html" class="text-white hover:text-gold transition duration-300">Projetos</a>
                     <a href="#servicos" class="text-white hover:text-gold transition duration-300">Serviços</a>
                     <a href="#contato" class="text-white hover:text-gold transition duration-300">Contato</a>
                 </div>
@@ -258,7 +258,7 @@
             <div class="px-6 py-4 space-y-4">
                 <a href="#inicio" class="block text-white hover:text-gold transition duration-300">Início</a>
                 <a href="#sobre" class="block text-white hover:text-gold transition duration-300">Sobre</a>
-                <a href="#projetos" class="block text-white hover:text-gold transition duration-300">Projetos</a>
+                <a href="projetos.html" class="block text-white hover:text-gold transition duration-300">Projetos</a>
                 <a href="#servicos" class="block text-white hover:text-gold transition duration-300">Serviços</a>
                 <a href="#contato" class="block text-white hover:text-gold transition duration-300">Contato</a>
             </div>
@@ -294,7 +294,7 @@
                 Role devagar e sinta o espaço respirar conosco.
             </p>
             <div id="hero-buttons" class="hero-line hero-line--5 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projetos" class="bg-luxury-gold text-white px-8 py-4 rounded-full hover:opacity-90 transition duration-300 font-semibold">
+                <a href="projetos.html" class="bg-luxury-gold text-white px-8 py-4 rounded-full hover:opacity-90 transition duration-300 font-semibold">
                     Ver Projetos
                 </a>
                 <a href="#contato" class="glass-effect text-white px-8 py-4 rounded-full hover:bg-white hover:bg-opacity-10 transition duration-300 font-semibold">
@@ -303,15 +303,17 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
-            <span class="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/45">Explorar</span>
-            <div class="animate-bounce" aria-hidden="true">
+        <!-- Scroll Indicator: link para próxima seção (scroll suave no script.js) -->
+        <a href="#sobre"
+           class="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 py-3 px-6 rounded-full cursor-pointer text-white/45 hover:text-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent transition-colors duration-300 z-20"
+           aria-label="Explorar — ir para a seção Sobre">
+            <span class="text-[10px] md:text-xs uppercase tracking-[0.35em]">Explorar</span>
+            <span class="animate-bounce" aria-hidden="true">
                 <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                 </svg>
-            </div>
-        </div>
+            </span>
+        </a>
     </section>
 
     <!-- Sobre Section -->
@@ -420,10 +422,10 @@
                 </p>
             </div>
 
-            <!-- Portfolio Grid (scroll-linked clip-path reveal per card) -->
+            <!-- Portfolio Grid (scroll-linked clip-path reveal per card) — cada card abre a página de projetos na âncora correspondente -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#cozinha-planejada" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" 
                              alt="Cozinha planejada" 
@@ -435,10 +437,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Project 2 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#closet-sob-medida" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600" 
                              alt="Closet sob medida" 
@@ -450,10 +452,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Project 3 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#home-office" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600" 
                              alt="Home office" 
@@ -465,10 +467,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Project 4 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#sala-de-estar" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600" 
                              alt="Sala de estar" 
@@ -480,10 +482,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Project 5 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#quarto-planejado" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600" 
                              alt="Quarto planejado" 
@@ -495,10 +497,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Project 6 -->
-                <div class="project-scroll-card group relative rounded-lg shadow-lg cursor-pointer hover-lift h-80">
+                <a href="projetos.html#banheiro-planejado" class="project-scroll-card group relative rounded-lg shadow-lg hover-lift h-80 block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white">
                     <div class="project-clip-reveal absolute inset-0 overflow-hidden rounded-lg">
                         <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" 
                              alt="Banheiro planejado" 
@@ -510,7 +512,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -779,7 +781,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#inicio" class="hover:text-gold transition duration-300">Início</a></li>
                         <li><a href="#sobre" class="hover:text-gold transition duration-300">Sobre</a></li>
-                        <li><a href="#projetos" class="hover:text-gold transition duration-300">Projetos</a></li>
+                        <li><a href="projetos.html" class="hover:text-gold transition duration-300">Projetos</a></li>
                         <li><a href="#servicos" class="hover:text-gold transition duration-300">Serviços</a></li>
                     </ul>
                 </div>
