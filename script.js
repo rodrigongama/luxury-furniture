@@ -64,32 +64,7 @@ revealElements.forEach(el => observer.observe(el));
 document.addEventListener('DOMContentLoaded', () => {
     // Check if Motion is loaded
     if (typeof Motion !== 'undefined') {
-        // Hero title animation
-        const heroTitle = document.getElementById('hero-title');
-        if (heroTitle) {
-            Motion.animate(heroTitle, 
-                { opacity: [0, 1], y: [50, 0] },
-                { duration: 1, delay: 0.2, easing: [0.16, 1, 0.3, 1] }
-            );
-        }
-
-        // Hero subtitle animation
-        const heroSubtitle = document.getElementById('hero-subtitle');
-        if (heroSubtitle) {
-            Motion.animate(heroSubtitle,
-                { opacity: [0, 1], y: [50, 0] },
-                { duration: 1, delay: 0.4, easing: [0.16, 1, 0.3, 1] }
-            );
-        }
-
-        // Hero buttons animation
-        const heroButtons = document.getElementById('hero-buttons');
-        if (heroButtons) {
-            Motion.animate(heroButtons,
-                { opacity: [0, 1], y: [50, 0] },
-                { duration: 1, delay: 0.6, easing: [0.16, 1, 0.3, 1] }
-            );
-        }
+        /* Hero copy animates via CSS (.hero-line) so it stays visible if Motion CDN fails */
 
         // Animate project cards on hover (projetos only — serviços uses .group on slides too)
         const projectCards = document.querySelectorAll('#projetos .project-scroll-card');
