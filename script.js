@@ -62,13 +62,68 @@ const observer = new IntersectionObserver((entries) => {
 const revealElements = document.querySelectorAll('.reveal-element');
 revealElements.forEach(el => observer.observe(el));
 
+/**
+ * Contadores de estatísticas (home #sobre, quem-somos): animam de zero até o valor ao entrar na viewport.
+ * Independe do Motion / Framer CDN.
+ */
+function initStatCounters() {
+    const counters = document.querySelectorAll('[data-stat-counter]');
+    if (!counters.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        counters.forEach((el) => {
+            const target = parseInt(el.getAttribute('data-stat-counter'), 10);
+            const suffix = el.getAttribute('data-suffix') || '';
+            if (!Number.isNaN(target)) el.textContent = target + suffix;
+        });
+        return;
+    }
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const runCounter = (el, target, suffix, durationMs) => {
+        const start = performance.now();
+        const tick = (now) => {
+            const elapsed = now - start;
+            const t = Math.min(elapsed / durationMs, 1);
+            const value = Math.round(target * easeOutCubic(t));
+            el.textContent = value + suffix;
+            if (t < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                el.textContent = target + suffix;
+            }
+        };
+        requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-stat-counter'), 10);
+                const suffix = el.getAttribute('data-suffix') || '';
+                if (Number.isNaN(target)) {
+                    io.unobserve(el);
+                    return;
+                }
+                el.textContent = '0' + suffix;
+                runCounter(el, target, suffix, 1600);
+                io.unobserve(el);
+            });
+        },
+        { threshold: 0.35, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    counters.forEach((el) => io.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', initStatCounters);
+
 // Hero animations using Motion (Framer Motion)
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if Motion is loaded
     if (typeof Motion !== 'undefined') {
-        /* Hero copy animates via CSS (.hero-line) so it stays visible if Motion CDN fails */
-
-        // Animate project cards on hover (projetos only — serviços uses .group on slides too)
         const projectCards = document.querySelectorAll('#projetos .project-scroll-card');
         projectCards.forEach(card => {
             card.addEventListener('mouseenter', () => {
@@ -85,35 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             });
         });
-
-        // Number counter animation
-        const counters = document.querySelectorAll('.text-4xl.font-bold.text-gold');
-        const observerForCounters = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const text = target.textContent;
-                    const number = parseInt(text);
-                    
-                    if (!isNaN(number)) {
-                        let current = 0;
-                        const increment = number / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= number) {
-                                target.textContent = text;
-                                clearInterval(timer);
-                            } else {
-                                target.textContent = Math.floor(current) + (text.includes('+') ? '+' : '') + (text.includes('%') ? '%' : '');
-                            }
-                        }, 30);
-                    }
-                    observerForCounters.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => observerForCounters.observe(counter));
     }
 });
 
