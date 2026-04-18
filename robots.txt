@@ -1,0 +1,5 @@
+# Ajuste a URL do Sitemap se o site for publicado em outro domínio ou subpasta.
+User-agent: *
+Allow: /
+
+Sitemap: https://arboreto.com.br/sitemap.xml
