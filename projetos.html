@@ -21,29 +21,69 @@
     {"@context":"https://schema.org","@type":"CollectionPage","name":"Projetos Arboreto","description":"Portfólio de projetos de marcenaria sob medida.","url":"https://arboreto.com.br/projetos.html","isPartOf":{"@type":"WebSite","name":"Arboreto","url":"https://arboreto.com.br/"}}
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        arboreto: {
+                            accent: '#FFC404',
+                            ink: '#000000',
+                            stone: '#665D55',
+                            muted: '#8B8B8B',
+                            line: '#D2C4BC',
+                            surface: '#E5E5E5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Sora', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif"', 'Georgia', 'serif'],
+                        label: ['Manrope', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
-        .bg-luxury-dark { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-        .bg-luxury-gold { background: linear-gradient(135deg, #c9a961 0%, #a88b4f 100%); }
-        .text-gold { color: #c9a961; }
+        body { font-family: 'Sora', system-ui, sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', system-ui, sans-serif; }
+        .bg-luxury-dark { background-color: #000000; }
+        .text-gold { color: #FFC404; }
+        .btn-arboreto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.75rem;
+            line-height: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 1.25rem 3rem;
+            border-radius: 0.125rem;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .btn-arboreto:hover { background: #e5e5e5; }
+        .btn-arboreto--sm { padding: 0.625rem 1.25rem; font-size: 0.75rem; }
+        .btn-arboreto--md { padding: 0.75rem 1.5rem; font-size: 0.75rem; }
         .smooth-scroll { scroll-behavior: smooth; }
         .project-detail { scroll-margin-top: 6rem; }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb { background: #c9a961; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #FFC404; border-radius: 4px; }
     </style>
 </head>
-<body class="smooth-scroll bg-gray-50 text-gray-900">
+<body class="smooth-scroll bg-neutral-50 text-neutral-900">
 
     <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-luxury-dark shadow-lg" data-always-dark="true">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold"><span class="text-gold">Arboreto</span></a>
+                <a href="index.html" class="text-2xl font-normal tracking-tight text-white">Arboreto</a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-white hover:text-gold transition duration-300">Início</a>
                     <a href="quem-somos.html" class="text-white hover:text-gold transition duration-300">Quem somos</a>
@@ -51,7 +91,7 @@
                     <a href="index.html#servicos" class="text-white hover:text-gold transition duration-300">Serviços</a>
                     <a href="index.html#contato" class="text-white hover:text-gold transition duration-300">Contato</a>
                 </div>
-                <a href="index.html#contato" class="hidden sm:inline-block bg-luxury-gold text-white px-6 py-2 rounded-full hover:opacity-90 transition duration-300 text-sm font-medium">
+                <a href="index.html#contato" class="hidden sm:inline-flex btn-arboreto btn-arboreto--sm">
                     Orçamento
                 </a>
                 <button type="button" id="mobile-menu-btn" class="md:hidden text-white" aria-label="Abrir menu">
@@ -74,8 +114,8 @@
 
     <header class="pt-28 pb-16 md:pt-32 md:pb-20 bg-luxury-dark text-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-gold tracking-[0.2em] uppercase text-sm mb-4">Portfólio</p>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Nossos <span class="text-gold">projetos</span></h1>
+            <p class="font-label text-gold tracking-[0.2em] uppercase text-sm mb-4">Portfólio</p>
+            <h1 class="text-4xl md:text-6xl font-normal mb-6 leading-tight">Nossos <span class="text-gold">projetos</span></h1>
             <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
                 Ambientes reais desenvolvidos com desenho, engenharia e acabamento Arboreto. Toque em um projeto na home ou navegue pelas fichas abaixo.
             </p>
@@ -111,7 +151,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Gavetas com divisórias e soft close</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Puxadores minimalistas ou cava</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -129,7 +169,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Nichos para bolsas e acessórios</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Acabamento antifúngico em áreas úmidas</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -147,7 +187,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Prateleiras para livros e objetos</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Cadeira e tapete fora do escopo — indicação de parceiros</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -165,7 +205,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Estante com portas de correr</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Integração com ar-condicionado split</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -183,7 +223,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Espelho em porta ou frente</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Nichos de leitura com LED</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -201,7 +241,7 @@
                     <li class="flex gap-2"><span class="text-gold">·</span> Espelho com iluminação frontal</li>
                     <li class="flex gap-2"><span class="text-gold">·</span> Compatível com metais e louças escolhidas pelo cliente</li>
                 </ul>
-                <a href="index.html#contato" class="inline-flex items-center bg-luxury-gold text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">Quero um projeto assim</a>
+                <a href="index.html#contato" class="btn-arboreto btn-arboreto--md">Quero um projeto assim</a>
             </div>
         </article>
 
@@ -214,7 +254,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-gold mb-2">Arboreto</h3>
+                    <h3 class="text-xl font-normal text-white mb-2">Arboreto Marcenaria</h3>
                     <p class="text-gray-400 text-sm">Marcenaria de alto padrão</p>
                 </div>
                 <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
@@ -225,7 +265,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 Arboreto. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Arboreto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

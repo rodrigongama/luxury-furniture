@@ -143,14 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form submission handler
-const contactForm = document.querySelector('form');
+// Form submission handler (home — orçamento)
+const contactForm = document.querySelector('#form-orcamento');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
         // Show success message (you can customize this)
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
         
         // Reset form
         contactForm.reset();
@@ -197,7 +197,7 @@ const createScrollProgress = () => {
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #c9a961, #a88b4f);
+        background: linear-gradient(90deg, #FFC404, #e6b000);
         z-index: 9999;
         transition: width 0.1s ease-out;
     `;

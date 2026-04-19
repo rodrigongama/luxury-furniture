@@ -21,30 +21,69 @@
     {"@context":"https://schema.org","@type":"AboutPage","name":"Quem somos — Arboreto","description":"Institucional: história, valores e atuação da marcenaria Arboreto.","url":"https://arboreto.com.br/quem-somos.html","mainEntity":{"@type":"Organization","name":"Arboreto","url":"https://arboreto.com.br/","email":"contato@arboreto.com.br","telephone":"+55-11-98765-4321"}}
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        arboreto: {
+                            accent: '#FFC404',
+                            ink: '#000000',
+                            stone: '#665D55',
+                            muted: '#8B8B8B',
+                            line: '#D2C4BC',
+                            surface: '#E5E5E5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Sora', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif"', 'Georgia', 'serif'],
+                        label: ['Manrope', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
-        .bg-luxury-dark { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-        .bg-luxury-gold { background: linear-gradient(135deg, #c9a961 0%, #a88b4f 100%); }
-        .text-gold { color: #c9a961; }
-        .bg-gold-soft { background: rgba(201, 169, 97, 0.15); }
+        body { font-family: 'Sora', system-ui, sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', system-ui, sans-serif; }
+        .bg-luxury-dark { background-color: #000000; }
+        .text-gold { color: #FFC404; }
+        .bg-gold-soft { background: rgba(255, 196, 4, 0.15); }
+        .btn-arboreto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.75rem;
+            line-height: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 1.25rem 3rem;
+            border-radius: 0.125rem;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .btn-arboreto:hover { background: #e5e5e5; }
+        .btn-arboreto--sm { padding: 0.625rem 1.25rem; font-size: 0.75rem; }
         .smooth-scroll { scroll-behavior: smooth; }
         .section-anchor { scroll-margin-top: 6rem; }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb { background: #c9a961; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #FFC404; border-radius: 4px; }
     </style>
 </head>
-<body class="smooth-scroll bg-gray-50 text-gray-900">
+<body class="smooth-scroll bg-neutral-50 text-neutral-900">
 
     <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-luxury-dark shadow-lg" data-always-dark="true">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold"><span class="text-gold">Arboreto</span></a>
+                <a href="index.html" class="text-2xl font-normal tracking-tight text-white">Arboreto</a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-white hover:text-gold transition duration-300">Início</a>
                     <a href="quem-somos.html" class="text-gold transition duration-300">Quem somos</a>
@@ -52,7 +91,7 @@
                     <a href="index.html#servicos" class="text-white hover:text-gold transition duration-300">Serviços</a>
                     <a href="index.html#contato" class="text-white hover:text-gold transition duration-300">Contato</a>
                 </div>
-                <a href="index.html#contato" class="hidden sm:inline-block bg-luxury-gold text-white px-6 py-2 rounded-full hover:opacity-90 transition duration-300 text-sm font-medium">
+                <a href="index.html#contato" class="hidden sm:inline-flex btn-arboreto btn-arboreto--sm">
                     Orçamento
                 </a>
                 <button type="button" id="mobile-menu-btn" class="md:hidden text-white" aria-label="Abrir menu">
@@ -193,8 +232,8 @@
                     Conte-nos sobre o seu espaço. Retornamos com próximos passos e uma proposta alinhada ao seu orçamento e prazo.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="index.html#contato" class="inline-flex justify-center bg-luxury-gold text-white px-8 py-4 rounded-full font-semibold hover:opacity-90 transition">Fale com a Arboreto</a>
-                    <a href="projetos.html" class="inline-flex justify-center border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Ver projetos</a>
+                    <a href="index.html#contato" class="btn-arboreto">Fale com a Arboreto</a>
+                    <a href="projetos.html" class="inline-flex justify-center border border-neutral-900 text-neutral-900 text-xs font-normal uppercase tracking-[0.15em] px-10 py-5 rounded-sm hover:bg-neutral-900 hover:text-white transition">Ver projetos</a>
                 </div>
             </div>
         </section>
@@ -204,7 +243,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-gold mb-2">Arboreto</h3>
+                    <h3 class="text-xl font-normal text-white mb-2">Arboreto Marcenaria</h3>
                     <p class="text-gray-400 text-sm">Marcenaria de alto padrão</p>
                 </div>
                 <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
@@ -215,7 +254,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 Arboreto. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Arboreto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
